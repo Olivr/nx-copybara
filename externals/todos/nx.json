@@ -17,30 +17,42 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
-  "externals": ["todos"],
+  "externals": [
+    "todos"
+  ],
   "projects": {
     "todos": {
-      "tags": ["todos"]
+      "tags": [
+        "todos"
+      ]
     },
     "todos-e2e": {
-      "tags": ["todos"],
-      "implicitDependencies": ["todos"]
+      "tags": [
+        "todos"
+      ],
+      "implicitDependencies": [
+        "todos"
+      ]
     },
     "todos-api": {
-      "tags": ["todos"]
-    },
-    "blog": {
-      "tags": ["blog"]
-    },
-    "blog-api": {
-      "tags": ["blog"]
+      "tags": [
+        "todos"
+      ]
     },
     "api-interfaces": {
-      "tags": ["todos", "blog"]
+      "tags": [
+        "todos",
+        "blog"
+      ]
     }
   }
 }
