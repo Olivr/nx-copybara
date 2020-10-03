@@ -23,17 +23,23 @@
   },
   "projects": {
     "todos": {
-      "tags": []
+      "tags": ["todos"]
     },
     "todos-e2e": {
-      "tags": [],
+      "tags": ["todos"],
       "implicitDependencies": ["todos"]
     },
-    "api": {
-      "tags": []
+    "todos-api": {
+      "tags": ["todos"]
+    },
+    "blog": {
+      "tags": ["blog"]
+    },
+    "blog-api": {
+      "tags": ["blog"]
     },
     "api-interfaces": {
-      "tags": []
+      "tags": ["todos", "blog"]
     }
   }
 }
