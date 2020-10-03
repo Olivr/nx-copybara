@@ -21,7 +21,6 @@
       }
     }
   },
-  "externals": ["todos"],
   "projects": {
     "todos": {
       "tags": ["todos"]
