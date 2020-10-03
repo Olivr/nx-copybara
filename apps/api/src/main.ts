@@ -3,7 +3,7 @@ import { Message } from '@myorg/api-interfaces';
 
 const app = express();
 
-const greeting: Message = { message: 'Welcome to api!' };
+const greeting: Message = { message: 'Weldcome to api!' };
 
 app.get('/api', (req, res) => {
   res.send(greeting);
