@@ -1,0 +1,21 @@
+on:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v2.1.0
+        with:
+          node-version: 12
+
+      - run: yarn install --frozen-lockfile
+
+      - run: yarn affected:lint --parallel --base=origin/${{ github.base_ref }}
+      - run: yarn affected:test --parallel --base=origin/${{ github.base_ref }}
+      - run: yarn affected:e2e --parallel --headless --base=origin/${{ github.base_ref }}
+
+      - run: yarn affected:build --parallel --base=origin/${{ github.base_ref }}

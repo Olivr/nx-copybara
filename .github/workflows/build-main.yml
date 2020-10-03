@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build & Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v2.1.0
+        with:
+          node-version: 12
+
+      - run: yarn install --frozen-lockfile
+
+      - run: yarn nx run-many --parallel --all --target=lint
+      - run: yarn nx run-many --parallel --all --target=test --configuration=production
+      - run: yarn nx run-many --parallel --all --target=e2e --headless --configuration=production
+
+      - run: yarn affected:build --base=main~1 --parallel --configuration=production
+      - run: yarn affected:release --base=main~1 --parallel --configuration=production
