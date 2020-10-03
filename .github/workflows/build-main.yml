@@ -5,9 +5,12 @@ on:
 
 jobs:
   build:
+    name: Build & Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v2.1.0
         with:
@@ -16,6 +19,8 @@ jobs:
       - run: yarn install --frozen-lockfile
 
       - run: yarn nx run-many --parallel --all --target=lint
-      - run: yarn nx run-many --parallel --all --target=test
-      - run: yarn nx run-many --parallel --all --target=e2e
-      - run: yarn nx run-many --parallel --all --target=build
+      - run: yarn nx run-many --parallel --all --target=test --configuration=production
+      - run: yarn nx run-many --parallel --all --target=e2e --headless --configuration=production
+
+      - run: yarn affected:build --parallel --configuration=production
+      - run: yarn affected:release --parallel --configuration=production
