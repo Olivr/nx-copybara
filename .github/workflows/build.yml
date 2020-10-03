@@ -16,7 +16,7 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: yarn affected:lint --base=${{ github.base_ref }} --head=${{ github.head_ref }}
-      - run: yarn affected:test --base=${{ github.base_ref }} --head=${{ github.head_ref }}
-      - run: yarn affected:e2e --base=${{ github.base_ref }} --head=${{ github.head_ref }}
-      - run: yarn affected:build --base=${{ github.base_ref }} --head=${{ github.head_ref }}
+      - run: yarn affected:lint --base=origin/${{ github.base_ref }} --head=${{ github.head_ref }}
+      - run: yarn affected:test --base=origin/${{ github.base_ref }} --head=${{ github.head_ref }}
+      - run: yarn affected:e2e --base=origin/${{ github.base_ref }} --head=${{ github.head_ref }}
+      - run: yarn affected:build --base=origin/${{ github.base_ref }} --head=${{ github.head_ref }}
